@@ -12,6 +12,8 @@
     "@clerk/nextjs": "^4.29.1",
     "@edgestore/react": "^0.1.6",
     "@edgestore/server": "^0.1.6",
+    "axios": "^1.6.3",
+    "mongoose": "^8.0.3",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",

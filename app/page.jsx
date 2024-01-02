@@ -1,40 +1,17 @@
-"use client";
-
-import * as React from "react";
-import { useEdgeStore } from "../lib/edgestore";
-
-export default function Page() {
-  const [file, setFile] = React.useState();
-  const { edgestore } = useEdgeStore();
-
+import Image from "next/image";
+import { UserButton } from "@clerk/nextjs";
+import ImageUpload from "@/components/UploadImage";
+import FetchImages from "@/components/FetchImages";
+export default function Home() {
   return (
-    <div className="min-h-screen w-full flex justify-center items-center">
-      <div className="flex flex-col">
-        <input
-          type="file"
-          onChange={(e) => {
-            setFile(e.target.files?.[0]);
-          }}
-        />
-        <button
-          className="bg-zinc-800 px-4 py-2 text-white"
-          onClick={async () => {
-            if (file) {
-              const res = await edgestore.publicFiles.upload({
-                file,
-                onProgressChange: (progress) => {
-                  // you can use this to show a progress bar
-                  console.log(progress);
-                },
-              });
-              // you can run some server action or api here
-              // to add the necessary data to your database
-              console.log(res);
-            }
-          }}
-        >
-          Upload
-        </button>
+    <div className="min-h-screen w-full px-10 py-4 flex flex-col items-center">
+      <div className="w-full h-20 flex justify-between bg-zinc-800 items-center p-2 mb-10 px-4">
+        <h1 className="text-4xl text-white font-bold">Photu</h1>
+        <UserButton afterSignOutUrl="/" />
+      </div>
+      <ImageUpload />
+      <div>
+        <FetchImages />
       </div>
     </div>
   );
